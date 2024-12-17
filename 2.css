@@ -124,3 +124,9 @@ body {
 #content pre{
     text-align: left;
 }
+
+abbr 
+{
+    font-style: italic;
+    color: chocolate;
+}

@@ -112,3 +112,8 @@ body {
 #list{
     text-align: left;
 }
+
+#citelegend{
+    text-align: right;
+    padding-right: 10px;
+}
