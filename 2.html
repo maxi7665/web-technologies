@@ -1,14 +1,23 @@
 <html>
 
+<!-- шапка - обязательный элемент сайта -->
+
 <head>
     <title>Язык Kotlin</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/kotlin_logo.png" />
     <link rel="stylesheet" type="text/css" href="2.css">
+
+    <meta charset="UTF-8">
+    <!-- meta - дополнительное задание -->
+    <meta name="description" content="Kotlin programming language">
+    <meta name="keywords" content="Kotlin, Java, JVM, JDK">
+    <meta name="author" content="Maxim Bystrov">
 </head>
 
 <body>
     <div id="container" class="container">
-        <div id="header">
-
+        <header id="header">
+            <div id="logo"><img src="img/kotlin_logo.png"></div>
 
             <h2 id="sitename">Язык Kotlin</h2>
 
@@ -16,111 +25,148 @@
             <h3 id="pagename">Документация</h3>
 
 
-        </div>
+        </header>
 
-        <div id="navigation" class="container">
+        <!-- навигация между страницами - обязательный элемент сайта -->
+        <nav id="navigation" class="container">
             <h2><a href="1.html">История</a>
                 <a href="2.html">Документация</a>
                 <a href="3.html">Источники</a>
             </h2>
-        </div>
+        </nav>
 
         </p>
 
-
-        <div id="sidebar">
+        <!-- боковая панель -->
+        <aside id="sidebar">
             <h2>Новости</h2>
-        </div>
+            <h3><a href="https://kotlinlang.org/docs/releases.html">Release Notes</a></h3>
+            <h3><a href="https://blog.jetbrains.com/kotlin/2024/11/kotlin-roundup-kodee-s-top-picks/">Kotlin Roundup</a>
+            </h3>
+            <h3><a href="https://blog.jetbrains.com/kotlin/2024/10/ktor-3-0/">Вышел Ktor 3.0</a></h3>
+        </aside>
+
+        <!-- основной контент -->
         <div id="content">
-            <h2>Статус поддержки последних версий</h2>
+
+            <article>
+                <h2>Статус поддержки последних версий</h2>
+
+                <!-- таблица - основное и дополнительное задание -->
+                <table id="table" border="1" cellpadding="4" cellspacing="0">
+                    <colgroup>
+                        <col>
+                        <col span="3" style="background-color:yellow">
+                        <col style="background-color:green">
+                    </colgroup>
+                    <caption>Описание поддержки версий языка Kotlin</caption>
+                    <thead>
+                        <tr>
+                            <th>Версия</th>
+                            <th>1.7</th>
+                            <th>1.8</th>
+                            <th>1.9</th>
+                            <th>2.0</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Обновления безопасности</th>
+                            <td colspan="3">Нет</td>
+                            <td>Да</th>
+                        </tr>
+                        <tr align="center">
+                            <th>Дата выпуска</th>
+                            <td>09 Jun 2022</td>
+                            <td>28 Dec 2022</td>
+                            <td>06 Jul 2023</td>
+                            <td>21 May 2024</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <hr>
+
+            <article>
+
+                <h2>Kotlin Multiplatform</h2>
+
+                <p>Поддержка мультиплатформенного программирования является одним из ключевых преимуществ Kotlin. Она
+                    сокращает время, затрачиваемое на написание и поддержку одного и того же кода для разных платформ,
+                    сохраняя при этом гибкость и преимущества нативного программирования.</p>
+
+                <!-- набор картинок - основное задание -->
+                <picture id="pic1">
+                    <source srcset="img/kotlin_multiplatform_scheme.png" type="image/png" />
+                    <img src="img/kotlin_multiplatform_scheme.jpg" alt="Multiplatform scheme" />
+                </picture>
+
+                <h3>Примеры использования Kotlin Multiplatform</h3>
+
+                <!-- strong - дополнительное задание -->
+                <p><strong>Android и iOS приложения</strong></p>
+
+                <picture id="pic2">
+                    <img src="img/android.jpg" alt="Android kotlin" />
+                </picture>
+
+                <!-- mark - дополнительное задание -->
+                <p>Использование <mark>одного кода</mark> на всех мобильных платформах является одним из основных
+                    вариантов
+                    использования Kotlin Multiplatform. С помощью Kotlin Multiplatform Mobile вы можете создавать
+                    мультиплатформенные мобильные приложения, совместно использующие один код и в Android, и в iOS,
+                    например
+                    бизнес-логику, возможности подключения и многое другое.</p>
 
 
-            <table id="table" border="1" cellpadding="4" cellspacing="0">
-                <tr>
-                    <th>Версия</th>
-                    <th>1.7</th>
-                    <th>1.8</th>
-                    <th>1.9</th>
-                    <th>2.0</th>
-                </tr>
-                <tr>
-                    <th>Обновления безопасности</th>
-                    <td colspan="3">Нет</td>
-                    <td>Да</th>
-                </tr>
-                <tr align="center">
-                    <th>Дата выпуска</th>
-                    <td>09 Jun 2022</td>
-                    <td>28 Dec 2022</td>
-                    <td>06 Jul 2023</td>
-                    <td>21 May 2024</td>
-                </tr>
-            </table>
-            <hr> 
+                <p><strong>Фулстек веб-приложения</strong></p>
 
-            <h2>Kotlin Multiplatform</h2>
+                <picture id="pic3">
+                    <img src="img/kotlin_fullstack.webp" alt="Fullstack kotlin" />
+                </picture>
 
-            <p>Поддержка мультиплатформенного программирования является одним из ключевых преимуществ Kotlin. Она
-                сокращает время, затрачиваемое на написание и поддержку одного и того же кода для разных платформ,
-                сохраняя при этом гибкость и преимущества нативного программирования.</p>
+                <p>Другой сценарий, когда совместное использование кода может принести пользу, — это приложение, в
+                    котором
+                    логика может быть повторно использована как на стороне сервера, так и на стороне клиента,
+                    запущенного в
+                    браузере. С этим Kotlin Multiplatform тоже прекрасно справляется.</p>
 
-            <picture id="pic1">
-                <source srcset="img/kotlin_multiplatform_scheme.png" type="image/png" />
-                <img src="img/kotlin_multiplatform_scheme.jpg" alt="Multiplatform scheme" />
-            </picture>
 
-            <h3>Примеры использования Kotlin Multiplatform</h3>
+                <p><strong>Мультиплатформенные библиотеки</strong></p>
 
-            <p><strong>Android и iOS приложения</strong></p>
+                <picture id="pic3">
+                    <img src="img/kotlin_Multiplatform_lib.png" alt="Multiplatform kotlin lib" />
+                </picture>
 
-            <picture id="pic2">
-                <img src="img/android.jpg" alt="Android kotlin" />
-            </picture>
+                <!-- abbr - дополнительное задание -->
+                <p>Kotlin Multiplatform также отлично подойдет для авторов библиотек. Вы можете создать
+                    мультиплатформенную
+                    библиотеку с общим кодом и ее платформенными реализациями для <abbr>JVM</abbr>, <abbr>JS</abbr> и
+                    собственных платформ. После
+                    публикации мультиплатформенная библиотека может использоваться в других кроссплатформенных проектах
+                    в
+                    качестве зависимости.</p>
 
-            <p>Использование <mark>одного кода</mark> на всех мобильных платформах является одним из основных вариантов
-                использования Kotlin Multiplatform. С помощью Kotlin Multiplatform Mobile вы можете создавать
-                мультиплатформенные мобильные приложения, совместно использующие один код и в Android, и в iOS, например
-                бизнес-логику, возможности подключения и многое другое.</p>
-                
+                <p><strong>Общий код для мобильных и веб-приложений</strong></p>
 
-            <p><strong>Фулстек веб-приложения</strong></p>
+                <picture id="pic3">
+                    <img src="img/google-trends-cross-platform.png" alt="Web and mobile kotlin apps" />
+                </picture>
 
-            <picture id="pic3">
-                <img src="img/kotlin_fullstack.webp" alt="Fullstack kotlin" />
-            </picture>
-
-            <p>Другой сценарий, когда совместное использование кода может принести пользу, — это приложение, в котором
-                логика может быть повторно использована как на стороне сервера, так и на стороне клиента, запущенного в
-                браузере. С этим Kotlin Multiplatform тоже прекрасно справляется.</p>
-                
-
-            <p><strong>Мультиплатформенные библиотеки</strong></p>
-
-            <picture id="pic3">
-                <img src="img/kotlin_Multiplatform_lib.png" alt="Multiplatform kotlin lib" />
-            </picture>
-
-            <p>Kotlin Multiplatform также отлично подойдет для авторов библиотек. Вы можете создать мультиплатформенную
-                библиотеку с общим кодом и ее платформенными реализациями для <abbr>JVM</abbr>, <abbr>JS</abbr> и собственных платформ. После
-                публикации мультиплатформенная библиотека может использоваться в других кроссплатформенных проектах в
-                качестве зависимости.</p>
-
-            <p><strong>Общий код для мобильных и веб-приложений</strong></p>
-
-            <picture id="pic3">
-                <img src="img/google-trends-cross-platform.png" alt="Web and mobile kotlin apps" />
-            </picture>
-
-            <p>Еще одним популярным примером использования Kotlin Multiplatform является совместное использование
-                одного и того же кода в Android, iOS и веб-приложениях. Это сокращает объем бизнес-логики, написанной
-                фронтенд-разработчиками, и помогает более эффективно внедрять продукты, сокращая затраты на разработку и
-                тестирование.
-            </p>
-            <hr> 
+                <p>Еще одним популярным примером использования Kotlin Multiplatform является совместное использование
+                    одного и того же кода в Android, iOS и веб-приложениях. Это сокращает объем бизнес-логики,
+                    написанной
+                    фронтенд-разработчиками, и помогает более эффективно внедрять продукты, сокращая затраты на
+                    разработку и
+                    тестирование.
+                </p>
+            </article>
+            <hr>
 
             <h2>Определение имени пакета и импорт</h2>
             <p>Имя пакета указывается в начале исходного файла, так же как и в Java.</p>
-            <pre>                
+            <pre>
+                <!-- здесь и далее code - дополнительное задание           -->
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     package my.demo
 
@@ -130,86 +176,90 @@
             </pre>
             <p>Но в отличие от Java, нет необходимости, чтобы структура пакетов совпадала со структурой папок:
                 исходные файлы могут располагаться в произвольном месте на диске.</p>
-                <hr> 
+            <hr>
 
             <h2>Точка входа в программу</h2>
             <p>В Kotlin точкой входа в программу является функция main.</p>
-            <pre>                
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     fun main() {
         println("Hello world!")
     }</code>
             </pre>
             <p>Другая форма main может принимать массив строк String.</p>
-            <pre>                
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     fun main(args: Array<String>) {
         println(args.contentToString())
     }</code>
             </pre>
-            <hr> 
+            <hr>
 
             <h2>Вывод в стандартный поток</h2>
             <p>print выводит свой аргумент в стандартный поток вывода.</p>
-            <pre>                
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     print("Hello")
     print("world!")</code>
             </pre>
-            <p>println выводит свой аргумент и добавляет перевод строки, так что следующее, что вы выведите, появится на следующей строке.</p>
-            <pre>                
+            <p>println выводит свой аргумент и добавляет перевод строки, так что следующее, что вы выведите, появится на
+                следующей строке.</p>
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     println("Hello world!")
     println(42)</code>
             </pre>
-            <hr> 
+            <hr>
 
             <h2>Функции</h2>
             <p>Функция принимает два аргумента Int и возвращает Int.</p>
-            <pre>                
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     fun sum(a: Int, b: Int): Int {
         return a + b
     }</code>
             </pre>
-            <p>В качестве тела функции может выступать выражение. Тогда тип возвращаемого значения определяется автоматически.</p>
-            <pre>                
+            <p>В качестве тела функции может выступать выражение. Тогда тип возвращаемого значения определяется
+                автоматически.</p>
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     fun sum(a: Int, b: Int) = a + b</code>
             </pre>
             <p>Функция, не возвращающая никакого значения (void в Java).</p>
-            <pre>                
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     fun printSum(a: Int, b: Int): Unit {
         println("сумма $a и $b равна ${a + b}")
     }</code>
             </pre>
             <p>Тип возвращаемого значения Unit может быть опущен.</p>
-            <pre>                
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     fun printSum(a: Int, b: Int) {
         println("сумма $a и $b равна ${a + b}")
     }</code>
             </pre>
-            <hr> 
+            <hr>
 
             <h2>Переменные</h2>
-            <p>Неизменяемые (только для чтения) локальные переменные определяются с помощью ключевого слова val. Присвоить им значение можно только один раз.</p>
-            <pre>                
+            <p>Неизменяемые (только для чтения) локальные переменные определяются с помощью ключевого слова val.
+                Присвоить им значение можно только один раз.</p>
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     val a: Int = 1   // Инициализация при объявлении
     val b = 1        // Тип `Int` определен автоматически
-    val c: Int       // Указывать тип обязательно, если переменная не инициализирована сразу
+    val c: Int       // Указывать тип обязательно, 
+    // если переменная не инициализирована сразу
     c = 1            // Последующее присвоение</code>
             </pre>
             <p>Изменяемые переменные объявляются с помощью ключевого слова var.</p>
-            <pre>                
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     var x = 5 // Тип `Int` определен автоматически
     x += 1</code>
             </pre>
             <p>Вы можете объявлять глобальные переменные.</p>
-            <pre>                
+            <pre>
                 <code class="language-kotlin hljs" data-highlighted="yes">                
     val PI = 3.14
     var x = 0
@@ -221,14 +271,16 @@
         </div>
 
         <div id="clear"> </div>
-        <div id="footer">
+
+        <!-- подвал - обязательный элемент сайта -->
+        <footer id="footer">
             <h2>Контакты</h2>
             <p>
                 <a href="https://github.com/maxi7665">GitHub</a>
             </p>
             <a href="https://github.com/maxi7665/web-technologies">Исходный код сайта</a>
             </p>
-        </div>
+        </footer>
     </div>
 </body>
 
