@@ -12,6 +12,21 @@
     <meta name="description" content="Kotlin programming language">
     <meta name="keywords" content="Kotlin, Java, JVM, JDK">
     <meta name="author" content="Maxim Bystrov">
+
+    <!-- основное задание - глобальные таблицы стилей -->
+    <style>
+        table  {
+            border: 2px solid black;
+            overflow-x:scroll;
+            width:300px;
+            display:block;
+            border-radius: 3%;
+        }
+
+        tr, th, td {
+            border: 1px solid grey;
+        }   
+    </style>
 </head>
 
 <body>
@@ -53,7 +68,7 @@
                 <h2>Статус поддержки последних версий</h2>
 
                 <!-- таблица - основное и дополнительное задание -->
-                <table id="table" border="1" cellpadding="4" cellspacing="0">
+                <table id="table" cellpadding="4" cellspacing="0">
                     <colgroup>
                         <col>
                         <col span="3" style="background-color:yellow">
@@ -72,7 +87,8 @@
                     <tbody>
                         <tr>
                             <th>Обновления безопасности</th>
-                            <td colspan="3">Нет</td>
+                            <!-- основное задание - локальныая таблица стилей -->
+                            <td colspan="3">Нет <img style="width:5mm" src="img/no.png"></td>
                             <td>Да</th>
                         </tr>
                         <tr align="center">

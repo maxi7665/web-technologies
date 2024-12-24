@@ -1,0 +1,8 @@
+/* дополнительное задание - связные таблицы стилей */
+ol.roman {
+    list-style-type: upper-roman;
+  }
+  
+ol.decimal {
+    list-style-type: decimal-leading-zero;
+}
