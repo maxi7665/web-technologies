@@ -141,3 +141,8 @@ abbr
     font-style: italic;
     color: chocolate;
 }
+
+#pagename::first-letter
+{
+    font-size: 35px;
+}
