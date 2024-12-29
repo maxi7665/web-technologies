@@ -140,3 +140,8 @@ abbr
     font-style: italic;
     color: chocolate;
 }
+
+#inputDiv{
+    text-align: left;
+    margin: 10px;
+}

@@ -146,3 +146,8 @@ abbr
 {
     font-size: 35px;
 }
+
+#clockdiv {
+    text-align: left;
+    padding: 10px;
+}

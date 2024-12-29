@@ -10,9 +10,45 @@
     <meta name="description" content="Kotlin programming language">
     <meta name="keywords" content="Kotlin, Java, JVM, JDK">
     <meta name="author" content="Maxim Bystrov">
+
+    <script>
+
+        function init()
+        {
+            /// настройка часов
+            renderClocks();
+            setInterval(renderClocks, 1000);
+        }
+
+        // 1. Вывод информации об авторе
+        function alertAuthor()
+        {
+            alert("Быстров Максим Z1431");
+        }
+
+        // 2. Отрисовка часов
+        function renderClocks()
+        {
+            var clock1 = document.getElementById("clock1");
+            var clock2 = document.getElementById("clock2");
+            var clock3 = document.getElementById("clock3");
+
+            var date = new Date();
+
+            var timeZone1 = 'America/New_York';
+            var timeZone2 = 'Etc/UCT';
+            var timeZone3 = 'Europe/Moscow';
+
+            clock1.innerText = date.toLocaleString('ru-RU', { timeZone: timeZone1 }) + " " + timeZone1;
+            clock2.innerText = date.toLocaleString('ru-RU', { timeZone: timeZone2 }) + " " + timeZone2;
+            clock3.innerText = date.toLocaleString('ru-RU', { timeZone: timeZone3 }) + " " + timeZone3;
+        }
+
+        
+    </script>
 </head>
 
-<body>
+<body onload="init();">
     <div id="container" class="container">
 
         <!-- шапка - обязательный элемент сайта -->
@@ -52,6 +88,23 @@
             <p><a href="https://developer.mozilla.org/en-US/">MDN Web Docs</a></p>
             <p><a href="https://www.w3schools.com/html/default.asp">W3 Schools</a></p>
             <p><a href="https://www.osp.ru/os/2011/09/13011550">Открытые системы. Язык программирования Kotlin</a></p>
+
+            <hr>
+
+            <h1>Сценарии</h1>
+
+            <h2>Информация об авторе</h2>
+
+            <button onclick="alertAuthor();">Информация об авторе</button>
+
+            <h2>Часы в трех часовых поясах</h2>            
+
+            <div id="clockdiv">
+                <div id="clock1"></div>
+                <div id="clock2"></div>
+                <div id="clock3"></div>
+            </div>
+            
         </div>
 
         <div id="clear"> </div>
