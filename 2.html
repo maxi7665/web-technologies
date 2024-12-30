@@ -30,12 +30,14 @@
         }
     </style>
 
-    <script>
+    <script type="text/javascript">
+
+        var addedRows = [];
 
         // 3. добавление строки в таблицу
         function addRowToTable() {
             var table = document.getElementById("table");
-        
+
             var row = table.insertRow();
 
             var cell1 = row.insertCell(0);
@@ -61,6 +63,22 @@
             input3.value = "";
             input4.value = "";
             input5.value = "";
+
+            addedRows.push(row.rowIndex);
+        }
+
+        // доп. задание - удаление добавленных строк
+        function removeRowsFromTable() {
+            var table = document.getElementById("table");
+
+            // доп. задание: использование стрелочной функции
+            addedRows.reverse().forEach((row) => removeRow(table, row));
+            addedRows = [];
+        }
+
+        // доп. задание - использование функции нескольких аргументов
+        function removeRow(table, index) {
+            table.deleteRow(index);
         }
 
     </script>
@@ -148,6 +166,7 @@
                     2.0:<input id="input20"><br>
 
                     <button onclick="addRowToTable();">Добавить строку</button>
+                    <button onclick="removeRowsFromTable();">Удалить добавленные строки</button>
                 </div>
 
             </article>

@@ -4,31 +4,28 @@
     <title>Язык Kotlin</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/kotlin_logo.png" />
     <link rel="stylesheet" type="text/css" href="3.css">
-    
+
     <meta charset="UTF-8">
     <!-- meta - дополнительное задание -->
     <meta name="description" content="Kotlin programming language">
     <meta name="keywords" content="Kotlin, Java, JVM, JDK">
     <meta name="author" content="Maxim Bystrov">
 
-    <script>
+    <script type="text/javascript">
 
-        function init()
-        {
+        function init() {
             /// настройка часов
             renderClocks();
             setInterval(renderClocks, 1000);
         }
 
         // 1. Вывод информации об авторе
-        function alertAuthor()
-        {
+        function alertAuthor() {
             alert("Быстров Максим Z1431");
         }
 
         // 2. Отрисовка часов
-        function renderClocks()
-        {
+        function renderClocks() {
             var clock1 = document.getElementById("clock1");
             var clock2 = document.getElementById("clock2");
             var clock3 = document.getElementById("clock3");
@@ -44,10 +41,29 @@
             clock3.innerText = date.toLocaleString('ru-RU', { timeZone: timeZone3 }) + " " + timeZone3;
         }
 
-        
+        // 4-5. изменение цвета и размера элемента
+        function changeColor() {
+            document.getElementById("modifyableDiv").style.backgroundColor = getRandomColor();
+        }
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function changeSize() {
+            document.getElementById("modifyableDiv").style.width = 20 + Math.random() * 80 + "%";
+        }
+
+
     </script>
 </head>
 
+<!-- дополнительное задание - использование события окна браузера -->
 <body onload="init();">
     <div id="container" class="container">
 
@@ -77,7 +93,8 @@
         <div id="sidebar">
             <h2>Новости</h2>
             <h3><a href="https://kotlinlang.org/docs/releases.html">Release Notes</a></h3>
-            <h3><a href="https://blog.jetbrains.com/kotlin/2024/11/kotlin-roundup-kodee-s-top-picks/">Kotlin Roundup</a></h3>
+            <h3><a href="https://blog.jetbrains.com/kotlin/2024/11/kotlin-roundup-kodee-s-top-picks/">Kotlin Roundup</a>
+            </h3>
             <h3><a href="https://blog.jetbrains.com/kotlin/2024/10/ktor-3-0/">Вышел Ktor 3.0</a></h3>
         </div>
 
@@ -97,14 +114,24 @@
 
             <button onclick="alertAuthor();">Информация об авторе</button>
 
-            <h2>Часы в трех часовых поясах</h2>            
+            <h2>Часы в трех часовых поясах</h2>
 
             <div id="clockdiv">
                 <div id="clock1"></div>
                 <div id="clock2"></div>
                 <div id="clock3"></div>
             </div>
-            
+
+            <h2>Изменение цвета и размера элемента</h2>
+
+            <!-- 4-5. изменение цвета и размера элемента -->
+            <div style="display: grid;">
+
+                <div id="modifyableDiv" style="height: 20px; width: 100%; background-color: aqua; margin-left: auto; margin-right: auto; margin-bottom: 10px;"></div><br>
+                <button onclick="changeColor();" style="width: auto; margin-left: auto; margin-right: auto;">Изменить цвет</button>
+                <button onclick="changeSize();" style="width: auto; margin-left: auto; margin-right: auto;">Изменить размер</button>
+            </div>
+
         </div>
 
         <div id="clear"> </div>
