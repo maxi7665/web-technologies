@@ -72,8 +72,17 @@
                         $id = 0;
                     }
 
+                    // формы для обновления / удаления каждой строки
                     echo "<form id=\"releaseDelete".$id."\" action=\"delete.php\" method=\"post\"></form>";
                     echo "<form id=\"releaseUpdate".$id."\" action=\"update.php\" method=\"post\"></form>";
+
+                    // данные об идентификаторах
+                    echo "<input form=\"releaseDelete".$id."\" type=\"hidden\" name=\"id\" value=\"".$id."\" />";
+                    echo "<input form=\"releaseUpdate".$id."\" type=\"hidden\" name=\"id\" value=\"".$id."\" />";
+
+                    // данные об объекте обновления
+                    echo "<input form=\"releaseDelete".$id."\" type=\"hidden\" name=\"table\" value=\"releases\" />";
+                    echo "<input form=\"releaseUpdate".$id."\" type=\"hidden\" name=\"table\" value=\"releases\" />";
                 }
             ?>
 
@@ -99,9 +108,9 @@
                     
                     echo "<td><input name=\"code\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['code']) ? $row['code'] : "")."\"></td>";
                     echo "<td><input name=\"description\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['description']) ? $row['description'] : "")."\"></td>";
-                    echo "<td><input name=\"date\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['release_date']) ? $row['release_date'] : "")."\"></td>";
+                    echo "<td><input name=\"release_date\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['release_date']) ? $row['release_date'] : "")."\"></td>";
                     echo "<td><input name=\"type\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['type']) ? $row['type'] : "")."\"></td>";
-                    echo "<td><input type=\"submit\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['code']) ? "Обновить" : "Добавить")."\"></td>";
+                    echo "<td><input type=\"submit\" form=\"releaseUpdate".$id."\" value=\"".($id != 0 ? "Обновить" : "Добавить")."\"></td>";
 
                     if ($i < sizeof($rows))
                     {
