@@ -1,5 +1,5 @@
 <?php
-  require "repo.php"; 
+require "repo.php";
 ?>
 
 <html>
@@ -17,6 +17,7 @@
 </head>
 
 <!-- дополнительное задание - использование события окна браузера -->
+
 <body>
     <div id="container" class="container">
 
@@ -58,91 +59,144 @@
             <h2>Выпуски</h2>
 
             <?php
-                $rows = get_releases();
+            $rows = get_releases();
 
-                for ($i = 0; $i <= sizeof($rows); $i++)
+            for ($i = 0; $i <= sizeof($rows); $i++) 
+            {
+                if ($i < sizeof($rows)) 
                 {
-                    if ($i < sizeof($rows))
-                    {
-                        $row = $rows[$i];
-                        $id = $row["id"];
-                    }
-                    else
-                    {
-                        $id = 0;
-                    }
-
-                    // формы для обновления / удаления каждой строки
-                    echo "<form id=\"releaseDelete".$id."\" action=\"delete.php\" method=\"post\"></form>";
-                    echo "<form id=\"releaseUpdate".$id."\" action=\"update.php\" method=\"post\"></form>";
-
-                    // данные об идентификаторах
-                    echo "<input form=\"releaseDelete".$id."\" type=\"hidden\" name=\"id\" value=\"".$id."\" />";
-                    echo "<input form=\"releaseUpdate".$id."\" type=\"hidden\" name=\"id\" value=\"".$id."\" />";
-
-                    // данные об объекте обновления
-                    echo "<input form=\"releaseDelete".$id."\" type=\"hidden\" name=\"table\" value=\"releases\" />";
-                    echo "<input form=\"releaseUpdate".$id."\" type=\"hidden\" name=\"table\" value=\"releases\" />";
+                    $row = $rows[$i];
+                    $id = $row["id"];
+                } 
+                else 
+                {
+                    $id = 0;
                 }
+
+                // формы для обновления / удаления каждой строки
+                echo "<form id=\"releaseDelete" . $id . "\" action=\"delete.php\" method=\"post\"></form>";
+                echo "<form id=\"releaseUpdate" . $id . "\" action=\"update.php\" method=\"post\"></form>";
+
+                // данные об идентификаторах
+                echo "<input form=\"releaseDelete" . $id . "\" type=\"hidden\" name=\"id\" value=\"" . $id . "\" />";
+                echo "<input form=\"releaseUpdate" . $id . "\" type=\"hidden\" name=\"id\" value=\"" . $id . "\" />";
+
+                // данные об объекте обновления
+                echo "<input form=\"releaseDelete" . $id . "\" type=\"hidden\" name=\"table\" value=\"releases\" />";
+                echo "<input form=\"releaseUpdate" . $id . "\" type=\"hidden\" name=\"table\" value=\"releases\" />";
+            }
             ?>
 
             <table>
-                <td>Код</td><td>Описание</td><td>Дата</td><td>Тип</td>
+                <td>Код</td>
+                <td>Описание</td>
+                <td>Дата</td>
+                <td>Тип</td>
 
                 <?php
 
-                for ($i = 0; $i <= sizeof($rows); $i++)
+                for ($i = 0; $i <= sizeof($rows); $i++) 
                 {
-                    if ($i < sizeof($rows))
+                    if ($i < sizeof($rows)) 
                     {
                         $row = $rows[$i];
                         $id = $row["id"];
+                    } else {
+                        $row = array();
+                        $id = 0;
                     }
-                    else
+
+                    echo "<tr>";
+
+                    echo "<td><input name=\"code\" form=\"releaseUpdate" . $id . "\" value=\"" . (isset($row['code']) ? $row['code'] : "") . "\"></td>";
+                    echo "<td><textarea name=\"description\" form=\"releaseUpdate" . $id . "\" value=\"\">" . (isset($row['description']) ? $row['description'] : "") . "</textarea></td>";
+                    echo "<td><input name=\"release_date\" form=\"releaseUpdate" . $id . "\" value=\"" . (isset($row['release_date']) ? $row['release_date'] : "") . "\"></td>";
+                    echo "<td><input name=\"type\" form=\"releaseUpdate" . $id . "\" value=\"" . (isset($row['type']) ? $row['type'] : "") . "\"></td>";
+                    echo "<td><input type=\"submit\" form=\"releaseUpdate" . $id . "\" value=\"" . ($id != 0 ? "Обновить" : "Добавить") . "\"></td>";
+
+                    if ($i < sizeof($rows)) 
+                    {
+                        echo "<td><input type=\"submit\" form=\"releaseDelete" . $id . "\" value=\"Удалить\"></td>";
+                    }
+
+                    echo "</form>";
+                    echo "</tr>";
+                }
+                ?>
+
+            </table>
+
+            <h2>Статьи</h2>
+
+            <?php
+            $rows = get_articles();
+
+            for ($i = 0; $i <= sizeof($rows); $i++) 
+            {
+                if ($i < sizeof($rows)) 
+                {
+                    $row = $rows[$i];
+                    $id = $row["id"];
+                } 
+                else 
+                {
+                    $id = 0;
+                }
+
+                // формы для обновления / удаления каждой строки
+                echo "<form id=\"articleDelete" . $id . "\" action=\"delete.php\" method=\"post\"></form>";
+                echo "<form id=\"articleUpdate" . $id . "\" action=\"update.php\" method=\"post\"></form>";
+
+                // данные об идентификаторах
+                echo "<input form=\"articleDelete" . $id . "\" type=\"hidden\" name=\"id\" value=\"" . $id . "\" />";
+                echo "<input form=\"articleUpdate" . $id . "\" type=\"hidden\" name=\"id\" value=\"" . $id . "\" />";
+
+                // данные об объекте обновления
+                echo "<input form=\"articleDelete" . $id . "\" type=\"hidden\" name=\"table\" value=\"articles\" />";
+                echo "<input form=\"articleUpdate" . $id . "\" type=\"hidden\" name=\"table\" value=\"articles\" />";
+            }
+            ?>
+
+            <table>
+                <td>Выпуск</td>
+                <td>Автор</td>
+                <td>Описание</td>
+                <td>Ссылка</td>
+                <td>Дата</td>
+
+                <?php
+
+                for ($i = 0; $i <= sizeof($rows); $i++) 
+                {
+                    if ($i < sizeof($rows)) 
+                    {
+                        $row = $rows[$i];
+                        $id = $row["id"];
+                    } 
+                    else 
                     {
                         $row = array();
                         $id = 0;
                     }
 
-                    echo "<tr>";  
-                    
-                    echo "<td><input name=\"code\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['code']) ? $row['code'] : "")."\"></td>";
-                    echo "<td><input name=\"description\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['description']) ? $row['description'] : "")."\"></td>";
-                    echo "<td><input name=\"release_date\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['release_date']) ? $row['release_date'] : "")."\"></td>";
-                    echo "<td><input name=\"type\" form=\"releaseUpdate".$id."\" value=\"".(isset($row['type']) ? $row['type'] : "")."\"></td>";
-                    echo "<td><input type=\"submit\" form=\"releaseUpdate".$id."\" value=\"".($id != 0 ? "Обновить" : "Добавить")."\"></td>";
+                    echo "<tr>";
 
-                    if ($i < sizeof($rows))
+                    echo "<td><input name=\"release_code\" form=\"articleUpdate" . $id . "\" value=\"" . (isset($row['release_code']) ? $row['release_code'] : "") . "\"></td>";
+                    echo "<td><input name=\"author_name\" form=\"articleUpdate" . $id . "\" value=\"" . (isset($row['author_name']) ? $row['author_name'] : "") . "\"></td>";
+                    echo "<td><input name=\"resource_name\" form=\"articleUpdate" . $id . "\" value=\"" . (isset($row['resource_name']) ? $row['resource_name'] : "") . "\"></td>";
+                    echo "<td><input name=\"link\" form=\"articleUpdate" . $id . "\" value=\"" . (isset($row['link']) ? $row['link'] : "") . "\"></td>";
+                    echo "<td><input name=\"publication_date\" form=\"articleUpdate" . $id . "\" value=\"" . (isset($row['publication_date']) ? $row['publication_date'] : "") . "\"></td>";
+                    echo "<td><input type=\"submit\" form=\"articleUpdate" . $id . "\" value=\"" . ($id != 0 ? "Обновить" : "Добавить") . "\"></td>";
+
+                    if ($i < sizeof($rows)) 
                     {
-                        echo "<td><input type=\"submit\" form=\"releaseDelete".$id."\" value=\"Удалить\"></td>";
+                        echo "<td><input type=\"submit\" form=\"articleDelete" . $id . "\" value=\"Удалить\"></td>";
                     }
-                    
+
                     echo "</form>";
                     echo "</tr>";
                 }
-            ?>
-
-            </table>
-
-            <?php
-                for ($i = 0; $i <= 4; $i++)
-                {
-                    echo "<form id=\"article".$i."\" action=\"delete.php\" method=\"post\"></form>";
-                }
-            ?>
-
-            <table>
-
-            <?php
-                for ($i = 0; $i <= 4; $i++)
-                {
-                    echo "<tr>";                   
-
-                    echo "<td><input form=\"".$i."\">>1</td>1<td>1</td><td><input type=\"submit\" form=\"".$i."\" value=\"Удалить\"></td>";                    
-
-                    echo "</tr>";
-                }
-            ?>
+                ?>
 
             </table>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 31 2024 г., 16:54
+-- Время создания: Янв 03 2025 г., 13:27
 -- Версия сервера: 10.4.32-MariaDB
 -- Версия PHP: 8.2.12
 
@@ -36,6 +36,15 @@ CREATE TABLE `articles` (
   `release_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_unicode_ci;
 
+--
+-- Дамп данных таблицы `articles`
+--
+
+INSERT INTO `articles` (`id`, `author_name`, `resource_name`, `link`, `publication_date`, `release_id`) VALUES
+(1, 'danil-pavlov', 'What\'s new in Kotlin 2.1.0', 'https://kotlinlang.org/docs/whatsnew21.html', '2024-12-19', 1),
+(3, 'Quattro8', 'What\'s new in Kotlin 1.8.0', 'https://kotlinlang.org/docs/whatsnew18.html', '2024-09-25', 6),
+(4, 'sarahhaggarty', 'What\'s new in Kotlin 2.0.20', 'https://kotlinlang.org/docs/whatsnew2020.html', '2024-10-29', 8);
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +64,11 @@ CREATE TABLE `releases` (
 --
 
 INSERT INTO `releases` (`id`, `release_date`, `code`, `description`, `type`) VALUES
-(1, '2024-11-27', '2.1.0', 'A language release introducing new language features.', 'main');
+(1, '2024-11-27', '2.1.0', 'A language release introducing new language featuress.', 'language'),
+(4, '2024-05-21', '2.0.0', 'A language release with the Stable Kotlin K2 compiler.', 'language'),
+(6, '2022-12-28', '1.8.0', 'A feature release with improved kotlin-reflect performance, new recursively copy or delete directory content experimental functions for JVM, improved Objective-C/Swift interoperability.', 'feature'),
+(7, '2024-10-10', '2.0.21', 'A bug fix release for Kotlin 2.0.20', 'bugfix'),
+(8, '2024-08-22', '2.0.20', 'A tooling release for Kotlin 2.0.0 containing performance improvements and bug fixes. Features also include concurrent marking in Kotlin/Native\'s garbage collector, UUID support in Kotlin common standard library, Compose compiler updates, and support up to Gradle 8.8.', 'tooling');
 
 --
 -- Индексы сохранённых таблиц
@@ -83,13 +96,13 @@ ALTER TABLE `releases`
 -- AUTO_INCREMENT для таблицы `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `releases`
 --
 ALTER TABLE `releases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

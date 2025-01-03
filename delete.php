@@ -30,7 +30,7 @@ else
     }
     else if ($table == 'articles')
     {
-
+        remove_article($id);
     }
     else
     {

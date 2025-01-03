@@ -7,25 +7,12 @@ function init_conn()
     $password = "qwsxza";
     $dbname = "web";
 
-    // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
+    
+    if ($conn->connect_error) 
+    {
         die("Connection failed: " . $conn->connect_error);
     }
-
-    // $sql = "SELECT id, firstname, lastname FROM MyGuests";
-    // $result = $conn->query($sql);
-
-    // if ($result->num_rows > 0) {
-    //     // output data of each row
-    //     while ($row = $result->fetch_assoc()) {
-    //         echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
-    //     }
-    // } else {
-    //     echo "0 results";
-    // }
-    // $conn->close();
 
     return $conn;
 }
@@ -34,18 +21,43 @@ function get_releases()
 {
     $conn = init_conn();
 
-    $sql = "SELECT * FROM releases";
+    $sql = "SELECT * FROM releases order by code desc";
     $result = $conn->query($sql);
 
     $rows = array();
 
     $row_num = 0;
 
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while ($row = $result->fetch_assoc()) {
-            //echo "id: " . $row["id"] . " - Name: " . $row["firstname"] . " " . $row["lastname"] . "<br>";
+    if ($result->num_rows > 0) 
+    {
+        while ($row = $result->fetch_assoc()) 
+        {
+            $rows[$row_num] = $row;
 
+            $row_num ++;
+        }
+    }
+
+    $conn->close();
+
+    return $rows;
+}
+
+function get_articles()
+{
+    $conn = init_conn();
+
+    $sql = "SELECT r.code as release_code, a.* FROM releases as r join articles as a on a.release_id = r.id order by publication_date desc";
+    $result = $conn->query($sql);
+
+    $rows = array();
+
+    $row_num = 0;
+
+    if ($result->num_rows > 0) 
+    {
+        while ($row = $result->fetch_assoc()) 
+        {
             $rows[$row_num] = $row;
 
             $row_num ++;
@@ -68,9 +80,11 @@ function get_release_by_code($code)
 
     $row_num = 0;
 
-    if ($result->num_rows > 0) {
+    if ($result->num_rows > 0) 
+    {
         // output data of each row
-        while ($row = $result->fetch_assoc()) {      
+        while ($row = $result->fetch_assoc()) 
+        {      
             $release = $row;
         }
     }
@@ -85,10 +99,10 @@ function add_release($row)
     $conn = init_conn();
 
     $sql = "insert into releases(code, description, release_date, type) values ("
-        ."'".$row['code']."',"
-        ."'".$row['description']."',"
-        ."'".$row['release_date']."',"
-        ."'".$row['type']."');";
+        ."'".mysqli_real_escape_string($conn, $row['code'])."',"
+        ."'".mysqli_real_escape_string($conn, $row['description'])."',"
+        ."'".mysqli_real_escape_string($conn, $row['release_date'])."',"
+        ."'".mysqli_real_escape_string($conn, $row['type'])."');";
 
     //var_dump($sql);
 
@@ -112,16 +126,18 @@ function add_article($row)
         die('release with code '.$row['release_code'].' is not found');
     }    
 
-    $sql = "insert into articles('author_name', 'resource_name', 'link', 'publication_date', 'release_id') values ("
-        ."'".$row['author_name']."',"
-        ."'".$row['resource_name']."',"
-        ."'".$row['link']."',"
-        ."'".$row['publication_date']."',"
-        ."'".$release['id']."');";
+    $conn = init_conn();  
+
+    $sql = "insert into articles(author_name, resource_name, link, publication_date, release_id) values ("
+        ."'".mysqli_real_escape_string($conn, $row['author_name'])."',"
+        ."'".mysqli_real_escape_string($conn, $row['resource_name'])."',"
+        ."'".mysqli_real_escape_string($conn, $row['link'])."',"
+        ."'".mysqli_real_escape_string($conn, $row['publication_date'])."',"
+        ."'".mysqli_real_escape_string($conn, $release['id'])."');";
 
     //var_dump($sql);
 
-    $conn = init_conn();    
+      
     $result = $conn->query($sql);
     $conn->close();
 }
@@ -133,7 +149,9 @@ function update_release($release)
 
 function update_article($article)
 {
-    if (!isset($row['release_code']))
+    //var_dump($article);
+
+    if (!isset($article['release_code']))
     {
         die('release code is not present in query');
     }   
@@ -148,7 +166,7 @@ function update_article($article)
     $article['release_id'] = $release['id'];
     unset($article['release_code']);
 
-    update_table($release, 'articles');
+    update_table($article, 'articles');
 }
 
 function update_table($row, $table)
@@ -159,6 +177,8 @@ function update_table($row, $table)
 
     $is_first = 0;
 
+    $conn = init_conn();
+
     foreach ($row as $key => $value)
     {
         if ($is_first != 0)
@@ -166,7 +186,7 @@ function update_table($row, $table)
             $sql = $sql.",";
         }
 
-        $sql = $sql." ".$key."='".$value."'";
+        $sql = $sql." ".$key."='".mysqli_real_escape_string($conn,$value)."'";
 
         $is_first = 1;
     }
@@ -175,7 +195,7 @@ function update_table($row, $table)
 
     //var_dump($sql);
 
-    $conn = init_conn();
+    
     $result = $conn->query($sql);
     $conn->close();
 }
@@ -202,10 +222,5 @@ function remove_from($id, $table)
 
     $conn->close();
 }
-
-
-
-
-
 
 ?>
